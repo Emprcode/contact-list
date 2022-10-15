@@ -1,0 +1,18 @@
+.wrapper{
+    background: lightblue;
+    min-height: 100vh;
+
+}
+
+li{
+    margin-bottom: 0.3rem;
+}
+i{
+    background: skyblue;
+    width: 30px;
+    height: 30px;
+    padding-left: 7px;
+    padding-top: 7px;
+    border-radius: 9px;
+
+}

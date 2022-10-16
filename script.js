@@ -1,12 +1,12 @@
 
-const apiUrl = "https://randomuser.me/api/?results=20";
+const apiUrl = "https://randomuser.me/api/?results=20&";
 const listElement = document.getElementById('list');
 
 
 let userList = []
 
-const fetchUsers = () =>{
-    fetch(apiUrl)
+const fetchUsers = (query) =>{
+    fetch(apiUrl + (query))
     .then((response)=> {
         return response.json()
     })
@@ -50,4 +50,23 @@ const display = (users) => {
   document.getElementById("user-count").innerText = users.length;
 };
 
+const handleOnSearch = (e) => {
+    const value = e.value
+    const filteredUser = userList.filter((user, i) =>{
+        const name = user.name.first + user.name.last;
+        return name.toLowerCase().includes(value.toLowerCase());
+
+    });
+    
+    display(filteredUser);
+};
+
+const handleOnchange = (e)=> {
+
+    const value = e.value;
+    console.log(value);
+    const query = "gender=" + value;
+    fetchUsers(query);
+
+}
 

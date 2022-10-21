@@ -7,8 +7,10 @@ let userList = [];
 
 const listElement = document.querySelector("#list");
 
-const fetchUsers = () => {
-    fetch(apiUrl)
+const fetchUsers = (query) => {
+
+    const url = query? apiUrl + "&" + query : apiUrl;
+    fetch(url)
     .then((response)=> {
         return response.json();
     })
@@ -70,3 +72,10 @@ const handleOnSearch = (e) => {
 
 
 // have filter to fetch users based on gender
+
+const handleOnchange = (e) =>{
+   const value = e.value
+
+    const query = value? "gender=" + value : "";
+      fetchUsers(query);
+}
